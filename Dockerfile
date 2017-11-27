@@ -31,10 +31,9 @@ USER root
 RUN useradd -m developer -G sudo -s /bin/bash \
     && sed -i 's/%sudo[[:space:]]*ALL=(ALL:ALL)[[:space:]]*ALL/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
 
-# Expose this port for running NodeJS apps
-EXPOSE 3000
+# Also expose 8080 for running web based apps
+EXPOSE 22 8080
 
-EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 
